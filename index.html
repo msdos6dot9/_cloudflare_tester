@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta name="description" content="Cloudflare IP Batch Test Tool including HTTP respond time, regition detection and download speed test">
+  <title>CloudFlare Colo批量测试 2024年6月版</title>
+  <link href="/tabulator_site.min.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+  <script type="text/javascript" src="/jquery.js"></script>
+  <script type="text/javascript" src="/tabulator.min.js"></script>
+</head>
+
+<body>
+
+  <h1>Cloudflare IPv4测试</h1>
+ 
+
+
+  <div class="table panel">
+    <div class="line">
+      <div class="col">
+        <button class="button big" id="select-all" status=0>Select All</button>
+        <div class="line">
+          <input id="select-number" class="border" type="number" value="20" min="1" max="100"></input>
+          <button class="button" id="select-random"> Random </button>
+        </div>
+      </div>
+      <div class="col">
+        <button class="button big" id="test-respond" status=0>Test Respond</button>
+        <div class="line">
+          <select id="img-select" class="border">
+            <option value="0">115KB</option>
+            <option value="1" selected="selected">1.20MB</option>
+            <option value="2">10.4MB</option>
+          </select>
+          <button class="button" id="test-speed" status=0> Speed </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="main-table"></div>
+  <div class="panel bottom">
+    <div class="button" id="download" status=0>Data Sheet</div>
+  </div>
+  <p><b>本工具原作者为<a href="https://github.com/TulvL/cloudflare-ip-tester">@TulvL</a>，在此表示感谢</b></p>
+  <p><b>当前版本由<a href="https://msdos6dot9.top">msdos6dot9</a>修改，用于快速测试Anycast节点位置</b></p>
+  <p><b>注意：由于功能简化，测速和HTTPS访问不可用</b></p>
+
+  <script>
+    page = 50
+  </script>
+  <script type="text/javascript" src="/script.js"></script>
+  <script>
+    $.get("./ip_list.csv", tablemake)
+  </script>
+</body>
+
+</html>
